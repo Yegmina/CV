@@ -1,0 +1,763 @@
+/* Tested colors */
+/* #f68931 #5695cd #8b63bf #d0465f */
+:root {
+    --accent-color: #5695cd;
+    --light-accent-color: #e6f3ff;
+    --progress-background: #d1d9e1;
+}
+
+/* Google Fonts */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KoHo2dNFUnrHBJ5tyWfaQ.woff2) format('woff2');
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+/* A4 Page Setup */
+.A4 {
+    background: #f5f5f5;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sheet {
+    background: white;
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Print Button */
+.btn-print {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-print:hover {
+    background: #4a7ba8;
+}
+
+.btn-print i {
+    margin-right: 5px;
+}
+
+/* Resume Layout */
+    .resume {
+        max-width: 100%;
+    }
+    
+    @media print {
+        .resume {
+            max-width: 100% !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .resume__content {
+            display: block !important;
+            visibility: visible !important;
+        }
+    }
+
+/* Header Section */
+.resume__header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.resume__header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.resume__header .title {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.resume__header .summary {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.info-label {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+.info-text {
+    color: #555;
+}
+
+/* Two Column Layout */
+.resume__columns {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Section Styles */
+.resume__section {
+    margin-bottom: 30px;
+}
+
+.resume__section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.resume__section-title i {
+    color: var(--accent-color);
+    font-size: 1.2em;
+}
+
+.resume__section-title h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Awards Section */
+.award-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--light-accent-color);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+}
+
+.award-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.award-date {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.award-detail {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Experience Section */
+.xp-item {
+    margin-bottom: 25px;
+}
+
+.xp-job {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.xp-job span {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.xp-job small {
+    color: #666;
+    font-weight: 400;
+}
+
+.xp-detail {
+    margin-top: 10px;
+}
+
+.xp-detail p {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* Education Section */
+.edu-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.edu-school {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.edu-degree {
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 3px;
+}
+
+.edu-major {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.edu-detail {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.edu-date {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Publications Section */
+.pub-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.pub-title {
+    font-weight: 600;
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.pub-detail {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Volunteering Section */
+.vol-item {
+    margin-bottom: 20px;
+}
+
+.vol-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.vol-date {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.vol-detail p {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+/* Skills Section */
+.skill-category {
+    margin-bottom: 25px;
+}
+
+.skill-category h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--progress-background);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.skill-detail {
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-list li {
+    padding: 5px 0;
+    color: #555;
+    font-size: 0.9em;
+    position: relative;
+    padding-left: 15px;
+}
+
+.skill-list li:before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Languages Section */
+.lang-item {
+    margin-bottom: 15px;
+}
+
+.lang-name {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.lang-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--progress-background);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.lang-progress {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.lang-level {
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+}
+
+/* Other Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+}
+
+.skill-tag {
+    background: var(--light-accent-color);
+    color: var(--accent-color);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid var(--accent-color);
+}
+
+/* Additional Information Section */
+.additional-info p {
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.additional-info strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sheet {
+        width: 100%;
+        padding: 1cm;
+        margin: 0;
+    }
+    
+    .resume__columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .resume__header h1 {
+        font-size: 2em;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+/* Print Styles */
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    html, body {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    
+    body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+    }
+    
+    .A4 {
+        background: white !important;
+        padding: 0 !important;
+        min-height: auto !important;
+    }
+    
+    .sheet {
+        width: 21cm !important;
+        min-height: 29.7cm !important;
+        padding: 1.5cm !important;
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        background: white !important;
+        page-break-after: always !important;
+        overflow: visible !important;
+    }
+    
+    .btn-print {
+        display: none !important;
+    }
+    
+    .resume__header {
+        margin-bottom: 20px !important;
+        padding-bottom: 15px !important;
+        border-bottom: 3px solid var(--accent-color) !important;
+    }
+    
+    .resume__header h1 {
+        font-size: 2em !important;
+        color: var(--accent-color) !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .resume__header .title {
+        font-size: 1em !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .resume__header .summary {
+        font-size: 0.85em !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .resume__columns {
+        display: grid !important;
+        grid-template-columns: 3fr 1fr !important;
+        gap: 25px !important;
+        align-items: start !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .resume__main,
+    .resume__sidebar {
+        display: block !important;
+        visibility: visible !important;
+        width: 100% !important;
+    }
+    
+    .resume__section {
+        margin-bottom: 20px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__section-title {
+        margin-bottom: 15px !important;
+        padding-bottom: 6px !important;
+        border-bottom: 2px solid var(--accent-color) !important;
+    }
+    
+    .resume__section-title h2 {
+        color: var(--accent-color) !important;
+        font-size: 1.2em !important;
+    }
+    
+    .award-item,
+    .edu-item,
+    .pub-item {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        background: var(--light-accent-color) !important;
+        border-left: 4px solid var(--accent-color) !important;
+        margin-bottom: 15px !important;
+        padding: 12px !important;
+    }
+    
+    .xp-item {
+        margin-bottom: 20px !important;
+    }
+    
+    .xp-job {
+        font-size: 1em !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .xp-detail p {
+        font-size: 0.85em !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .skill-tag {
+        background: var(--light-accent-color) !important;
+        color: var(--accent-color) !important;
+        border: 1px solid var(--accent-color) !important;
+        font-size: 0.8em !important;
+        padding: 4px 8px !important;
+    }
+    
+    .skill-progress,
+    .lang-progress {
+        background: var(--accent-color) !important;
+    }
+    
+    .skill-bar,
+    .lang-bar {
+        background: var(--progress-background) !important;
+        height: 6px !important;
+    }
+    
+    .contact-info {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+    
+    .info-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 0.8em !important;
+    }
+    
+    .info-label {
+        color: var(--accent-color) !important;
+    }
+    
+    .skills-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+        gap: 6px !important;
+    }
+    
+    /* Ensure colors print */
+    .accent-color {
+        color: var(--accent-color) !important;
+    }
+    
+    /* Force page breaks */
+    .resume__main {
+        break-inside: avoid !important;
+    }
+    
+    .resume__sidebar {
+        break-inside: avoid !important;
+    }
+    
+    /* Specific page break controls */
+    .resume__experience {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__volunteering {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__education {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__awards {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__skills {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__publications {
+        page-break-inside: avoid !important;
+    }
+    
+    .resume__languages {
+        page-break-inside: avoid !important;
+    }
+    
+    /* Reduce spacing for print */
+    .vol-item {
+        margin-bottom: 15px !important;
+    }
+    
+    .vol-title {
+        font-size: 1em !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .vol-detail p {
+        font-size: 0.85em !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .skill-category {
+        margin-bottom: 20px !important;
+    }
+    
+    .skill-category h3 {
+        font-size: 1em !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .skill-item {
+        margin-bottom: 12px !important;
+    }
+    
+    .skill-name {
+        font-size: 0.9em !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .skill-list li {
+        font-size: 0.85em !important;
+        padding: 4px 0 !important;
+    }
+    
+    .lang-item {
+        margin-bottom: 12px !important;
+    }
+    
+    .lang-name {
+        font-size: 0.9em !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .additional-info p {
+        font-size: 0.85em !important;
+        margin-bottom: 10px !important;
+    }
+} 
